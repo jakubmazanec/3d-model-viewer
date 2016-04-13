@@ -14,7 +14,7 @@
   "repository": "",
   "main": "dist/next/server/index.js",
   "engines": {
-    "node": "5.10.1"
+    "node": "5.9.1"
   },
   "scripts": {
     "build": "gulp build",
