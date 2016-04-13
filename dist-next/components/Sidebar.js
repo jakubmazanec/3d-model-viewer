@@ -183,6 +183,10 @@ let Sidebar = function (_ash$Component) {
 	}, {
 		key: 'onMount',
 		value: function onMount() {
+			if (_ash2.default.support.platform === 'server') {
+				return;
+			}
+
 			requestAnimationFrame(this.handleAnimationFrame);
 		}
 	}, {

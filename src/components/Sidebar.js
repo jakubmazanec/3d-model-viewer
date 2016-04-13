@@ -79,6 +79,10 @@ export default class Sidebar extends ash.Component {
 	}
 
 	onMount() {
+		if (ash.support.platform === 'server') {
+			return;
+		}
+		
 		requestAnimationFrame(this.handleAnimationFrame);
 	}
 
