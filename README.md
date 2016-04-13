@@ -1,7 +1,23 @@
 3d-model-viewer
 ===============
 
-Proof-of-concept stl files viewer.
+Proof-of-concept stl files viewer in a browser.
+
+
+## Requirements
+
+- [Node.js](https://nodejs.org) 5.0.0 or higher (tested on 5.10.1 and 5.9.1)
+
+
+## Install
+
+```
+git clone git@github.com:jakubmazanec/3d-model-viewer.git
+cd 3d-model-viewer
+npm install
+npm start
+```
+Go to ```http://localhost:8008```
 
 
 ## Features & controls
