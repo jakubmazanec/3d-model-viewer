@@ -2217,7 +2217,7 @@ body {
 	width: 25%;
 	padding: 1.4rem;
 	max-height: 100vh;
-	overflow: scroll;
+	overflow-y: scroll;
 }
 
 .Sidebar__number {
