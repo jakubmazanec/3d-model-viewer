@@ -1,0 +1,26 @@
+.root {
+	width: 25%;
+	padding: 1bh;
+	max-height: 100vh;
+	overflow: scroll;
+}
+
+.number {
+	margin-right: 0.75bh;
+
+	font-feature-settings: 'kern', 'liga', 'clig', 'calt', 'lnum', 'tnum';
+}
+
+.value {
+	display: flex;
+	align-items: center;
+	margin-right: -0.25bh;
+
+	.number {
+		margin-right: auto;
+	}
+
+	a {
+		width: 2bh;
+	}
+}

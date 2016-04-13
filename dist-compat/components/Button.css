@@ -1,0 +1,202 @@
+.default, .flat, .invisible {
+	box-sizing: border-box;
+	position: relative;
+	display: inline-block;
+	z-index: 1;
+
+	height: 2bh;
+	margin: 0.25bh;
+
+	transition: color calc(var(--durations.fastest) * 1s) ease-in, background-color calc(var(--durations.fastest) * 1s) ease-in, border-color calc(var(--durations.fastest) * 1s) ease-in, box-shadow calc(var(--durations.fastest) * 1s) ease-in, transform calc(var(--durations.fastest) * 1s) ease-in, opacity calc(var(--durations.fastest) * 1s) ease-in, visibility calc(var(--durations.fastest) * 1s) ease-in;
+	will-change: color, background-color, border-color, box-shadow, transform, opacity, visibility;
+
+	white-space: nowrap;
+
+	&::before {
+		content: '';
+		position: absolute;
+		left: calc(-4 / 16 * 1bh);
+		top: calc(-4 / 16 * 1bh);
+		right: calc(-4 / 16 * 1bh);
+		bottom: calc(-4 / 16 * 1bh - var(--button.default.depth));
+		z-index: -1;
+		
+		visibility: hidden;
+		
+		transition: bottom calc(var(--durations.fastest) * 1s) ease-in, border-color calc(var(--durations.fastest) * 1s) ease-in, box-shadow calc(var(--durations.fastest) * 1s) ease-in, visibility calc(var(--durations.fastest) * 1s) ease-in;
+		
+		border-color: transparent;
+		border-width: 2px;
+		border-radius: calc(3 / 16 * 1bh + var(--button.default.borderRadius));
+	}
+
+	& + .default, & + .large, & + .invisible {
+		margin-left: b(1);
+	}
+
+	/* default */
+	padding: calc((var(--grid.baselineHeight) * 0.5 - var(--button.default.borderWidth)) * 1px) calc((var(--grid.baselineHeight) * 0.75 - var(--button.default.borderWidth)) * 1px);
+	
+	transform: translateY(0);
+
+	color: var(--button.default.color);
+	background-color: var(--button.default.backgroundColor);
+	background-image: none;
+	border-color: var(--button.default.borderColor);
+	border-width: calc(var(--button.default.borderWidth) * 1px);
+	border-radius: var(--button.default.borderRadius);
+	outline: 0 none;
+	
+	/*if (var(--button.default.depth) > 0) or (var(--button.default.focused.depth) > 0) or (var(--button.default.hovered.depth) > 0) or (var(--button.default.pressed.depth) > 0) or (var(--button.default.disabled.depth) > 0) {*/
+		box-shadow: 0 var(--button.default.depth) var(--button.default.sideColor), var(--button.default.boxShadow);
+	/*} else {
+		box-shadow: var(--button.default.boxShadow;
+	}*/
+
+	/* copy of default */
+	&:link, &:visited {
+		color: var(--button.default.color);
+		background-color: var(--button.default.backgroundColor);
+		border-color: var(--button.default.borderColor);
+	}
+	
+	font-size: calc(var(--button.default.fontSize) * 1px);
+	line-height: 1bh;
+
+	&:global(.isFocused), &:focus {
+		transform: translateY(calc(var(--button.default.depth) - var(--button.default.focused.depth)));
+		
+		color: var(--button.default.focused.color);
+		background-color: var(--button.default.focused.backgroundColor);
+		background-image: none;
+		border-color: var(--button.default.focused.borderColor);
+		outline: 0 none;
+		
+		/*if (ash.button.depth > 0) or (ash.button.focused.depth > 0) or (ash.button.hovered.depth > 0) or (ash.button.pressed.depth > 0) or (ash.button.disabled.depth > 0) {*/
+			box-shadow: 0 var(--button.default.focused.depth) var(--button.default.focused.sideColor), var(--button.default.focused.boxShadow);
+		/*} else {
+			box-shadow: ash.button.focused.boxShadow;
+		}*/
+		
+		&::before {
+			bottom: calc(-4 / 16 * 1bh - var(--button.default.focused.depth));
+			
+			visibility: visible;
+			
+			border-color: var(--colors.neutral.tint.6);
+		}
+	}
+
+	&:global(.isHovered), &:hover {
+		transform: translateY(calc(var(--button.default.depth) - var(--button.default.hovered.depth)));
+		
+		color: var(--button.default.hovered.color);
+		background-color: var(--button.default.hovered.backgroundColor);
+		background-image: none;
+		border-color: var(--button.default.hovered.borderColor);
+		outline: 0 none;
+		
+		/*if (ash.button.depth > 0) or (ash.button.focused.depth > 0) or (ash.button.hovered.depth > 0) or (ash.button.pressed.depth > 0) or (ash.button.disabled.depth > 0) {*/
+			box-shadow: 0 var(--button.default.hovered.depth) var(--button.default.hovered.sideColor), var(--button.default.hovered.boxShadow);
+		/*} else {
+			box-shadow: ash.button.hovered.boxShadow;
+		}*/
+		
+		&::before {
+			bottom: calc(-4 / 16 * 1bh - var(--button.default.hovered.depth));
+			
+			border-color: transparent;
+		}
+	}
+
+	&:global(.isPressed), &:active {
+		transform: translateY(calc(var(--button.default.depth) - var(--button.default.pressed.depth)));
+		
+		color: var(--button.default.pressed.color);
+		background-color: var(--button.default.pressed.backgroundColor);
+		background-image: none;
+		border-color: var(--button.default.pressed.borderColor);
+		outline: 0 none;
+		
+		/*if (ash.button.depth > 0) or (ash.button.focused.depth > 0) or (ash.button.hovered.depth > 0) or (ash.button.pressed.depth > 0) or (ash.button.disabled.depth > 0) {*/
+			box-shadow: 0 var(--button.default.pressed.depth) var(--button.default.pressed.sideColor), var(--button.default.pressed.boxShadow);
+		/*} else {
+			box-shadow: ash.button.pressed.boxShadow;
+		}*/
+		
+		&::before {
+			bottom: calc(-4 / 16 * 1bh - var(--button.default.pressed.depth));
+			
+			border-color: transparent;
+		}
+	}
+
+	&:global(.isDisabled), &:disabled {
+		cursor: not-allowed;
+		transform: translateY(calc(var(--button.default.depth) - var(--button.default.disabled.depth)));
+		
+		color: var(--button.default.disabled.color);
+		background-color: var(--button.default.disabled.backgroundColor);
+		background-image: none;
+		border-color: var(--button.default.disabled.borderColor);
+		outline: 0 none;
+		
+		/*if (ash.button.depth > 0) or (ash.button.focused.depth > 0) or (ash.button.hovered.depth > 0) or (ash.button.pressed.depth > 0) or (ash.button.disabled.depth > 0) {*/
+			box-shadow: 0 var(--button.default.disabled.depth) var(--button.default.disabled.sideColor), var(--button.default.disabled.boxShadow);
+		/*} else {
+			box-shadow: ash.button.disabled.boxShadow;
+		}*/
+		
+		&::before {
+			bottom: calc(-4 / 16 * 1bh - var(--button.default.disabled.depth));
+			
+			border-color: transparent;
+		}
+	}
+
+	&__badge {
+		position: relative;
+		display: inline-block;
+		box-sizing: border-box;
+		z-index: 1;
+
+		height: b(1);
+		min-width: b(1);
+		padding: 0 b(2 / 8);
+		margin: 0 b(-3 / 16) 0 b(0.375);
+
+		color: ash.button.badge.color;
+
+		font-size: ash.button.badge.fontSize;
+		text-align: center;
+		vertical-align: top;
+
+		+before(left 0 top rem(2) right 0 bottom rem(2)) {
+			z-index: -1;
+
+			background-color: ash.button.badge.backgroundColor;
+			border-radius: ash.button.badge.borderRadius;
+		}
+	}
+
+	svg {
+		display: inline-block;
+
+		width: calc((var(--grid.baselineHeight) - 8) * 1px);
+		height: calc((var(--grid.baselineHeight) - 8) * 1px);
+		margin: 4px 0.5bh 0 calc((var(--grid.baselineHeight) * 0.25 - 4) * -1px);
+
+		color: var(--colors.secondary1.shade.3);
+
+		vertical-align: top;
+	}
+
+	&:global(.isLarge) {
+		height: 3bh;
+
+		padding: calc((var(--grid.baselineHeight) * 0.5 - var(--button.default.borderWidth)) * 1px) calc((var(--grid.baselineHeight) * 1 - var(--button.default.borderWidth)) * 1px);
+				
+		font-size: calc(var(--typographicScale.9) * 1px);
+		line-height: 2bh;
+	}
+}
