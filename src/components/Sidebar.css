@@ -2,7 +2,7 @@
 	width: 25%;
 	padding: 1bh;
 	max-height: 100vh;
-	overflow: scroll;
+	overflow-y: scroll;
 }
 
 .number {
